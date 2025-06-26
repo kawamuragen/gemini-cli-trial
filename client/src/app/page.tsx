@@ -167,7 +167,7 @@ export default function Home() {
                 labelFormatter={(label) => format(new Date(label), 'yyyy-MM-dd')}
                 formatter={(value, name) => {
                   if (name === 'close') return [`${(value as number).toFixed(2)}`, '終値'];
-                  if (name.startsWith('ma')) return [`${(value as number).toFixed(2)}`, `${name.replace('ma', '')}日移動平均`];
+                  if (typeof name === 'string' && name.startsWith('ma')) return [`${(value as number).toFixed(2)}`, `${name.replace('ma', '')}日移動平均`];
                   return [value, name];
                 }}
               />
