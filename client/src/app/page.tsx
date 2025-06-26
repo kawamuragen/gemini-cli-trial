@@ -61,7 +61,7 @@ export default function Home() {
         return;
       }
 
-      let { stockData, percentageChange } = result;
+      const { stockData, percentageChange } = result;
 
       // 各移動平均線を計算
       stockData = calculateMovingAverage(stockData, 5);
