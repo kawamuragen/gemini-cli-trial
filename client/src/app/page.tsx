@@ -61,15 +61,16 @@ export default function Home() {
         return;
       }
 
-      const { stockData, percentageChange } = result;
+      const { stockData: rawStockData, percentageChange } = result;
+      let processedStockData = rawStockData;
 
       // 各移動平均線を計算
-      stockData = calculateMovingAverage(stockData, 5);
-      stockData = calculateMovingAverage(stockData, 25);
-      stockData = calculateMovingAverage(stockData, 75);
-      stockData = calculateMovingAverage(stockData, 200);
+      processedStockData = calculateMovingAverage(processedStockData, 5);
+      processedStockData = calculateMovingAverage(processedStockData, 25);
+      processedStockData = calculateMovingAverage(processedStockData, 75);
+      processedStockData = calculateMovingAverage(processedStockData, 200);
 
-      setStockData(stockData);
+      setStockData(processedStockData);
       setPercentageChange(percentageChange);
     } catch (err) {
       setError('An unexpected error occurred.');
